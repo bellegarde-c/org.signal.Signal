@@ -34,6 +34,8 @@ finish-args:
   - --talk-name=org.ayatana.indicator.application
   - --talk-name=org.gnome.Mutter.IdleMonitor
   - --talk-name=org.kde.StatusNotifierWatcher
+  # Feedback
+  - --talk-name=org.sigxcpu.Feedback
   # Environment Variables to control the behavior
   - --env=SIGNAL_DISABLE_GPU=0
   - --env=SIGNAL_DISABLE_GPU_SANDBOX=0
