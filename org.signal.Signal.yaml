@@ -49,7 +49,7 @@ modules:
         bsdtar -Oxf signal-desktop.deb 'data.tar.xz' |
           bsdtar -xf - \
             --exclude='./usr/share/doc'
-      - mv "opt/Signal" "${FLATPAK_DEST}/Signal"
+      - mv "usr/lib/signal-desktop" "${FLATPAK_DEST}/Signal"
       - install -Dm0644 "usr/share/applications/signal-desktop.desktop" "${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop"
 
       - |
@@ -67,14 +67,8 @@ modules:
         dest-filename: signal-desktop.deb
         url: http://droidian-signal-desktop.repo.droidian.org/next-testing/pool/main/s/signal-desktop/signal-desktop_8.0.0-1%7egit20260227155320.37c782d.next.testing_arm64.deb
         sha512: fd9030db167e85a216662664feb9a21185caf9e5a726fbe098078e08f5e97e246585c2216b9fa89ec9f3dcb91126f7a657b3c45b85dd1f3a1aad0eea7944a87e
-        x-checker-data:
-          type: debian-repo
-          package-name: signal-desktop
-          root: https://updates.signal.org/desktop/apt
-          dist: xenial
-          component: main
         only-arches:
-          - x86_64
+          - aarch64
       - type: file
         path: signal-desktop.sh
       - type: file

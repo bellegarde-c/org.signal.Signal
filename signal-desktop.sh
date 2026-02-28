@@ -26,7 +26,12 @@ EOF
     fi
 }
 
-EXTRA_ARGS=()
+EXTRA_ARGS=(
+    --enable-features=UseOzonePlatform
+    --ozone-platform=wayland
+    --enable-wayland-ime
+    --wayland-text-input-version=3    
+)
 
 declare -i SIGNAL_DISABLE_GPU="${SIGNAL_DISABLE_GPU:-0}"
 declare -i SIGNAL_DISABLE_GPU_SANDBOX="${SIGNAL_DISABLE_GPU_SANDBOX:-0}"
@@ -83,4 +88,4 @@ export TMPDIR="${XDG_RUNTIME_DIR}/app/${FLATPAK_ID}"
 find "${TMPDIR}" -name ".org.chromium.Chromium.*" -delete
 
 # Finally launch signal
-exec zypak-wrapper "/app/Signal/signal-desktop" "${EXTRA_ARGS[@]}" "$@"
+gdbus call -e -d org.signal.Signal -o /org/signal/Signal -m org.signal.Signal.ShowWindow >/dev/null 2>&1 || exec zypak-wrapper "/app/Signal/signal-desktop" "${EXTRA_ARGS[@]}" "$@"
