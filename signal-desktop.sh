@@ -88,4 +88,10 @@ export TMPDIR="${XDG_RUNTIME_DIR}/app/${FLATPAK_ID}"
 find "${TMPDIR}" -name ".org.chromium.Chromium.*" -delete
 
 # Finally launch signal
-gdbus call -e -d org.signal.Signal -o /org/signal/Signal -m org.signal.Signal.ShowWindow >/dev/null 2>&1 || exec zypak-wrapper "/app/Signal/signal-desktop" "${EXTRA_ARGS[@]}" "$@"
+gdbus introspect -e -d org.signal.Signal -o /org/signal/Signal >/dev/null 2>&1
+if (( $? == 0 ))
+then
+    gdbus call -e -d org.signal.Signal -o /org/signal/Signal -m org.signal.Signal.ShowWindow
+else
+	exec zypak-wrapper "/app/Signal/signal-desktop" "${EXTRA_ARGS[@]}" "$@"
+fi
