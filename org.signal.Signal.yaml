@@ -67,8 +67,8 @@ modules:
     sources:
       - type: file
         dest-filename: signal-desktop.deb
-        url: http://droidian-signal-desktop.repo.droidian.org/next-testing/pool/main/s/signal-desktop/signal-desktop_8.15.0-1+droidian0+git20260624074210.80687dc.next.testing_arm64.deb
-        sha512: 3580c3ae9efbe1a02cecd887728dd73812cf2efadb45b6c7c7b1e547269f41573318aa1cc5f6b18d18a79d95e15c55e191ea50da1e129b9212dd519538e5b7f2
+        url: http://droidian-signal-desktop.repo.droidian.org/next-testing/pool/main/s/signal-desktop/signal-desktop_8.18.0-1%2bdroidian0%2bgit20260713085409.0249d12.next.testing_amd64.deb
+        sha512: c1a768e726e2e800282cf05b621c1b975cd11b86ca76d0f653857aaeeee5b956b24f933eebd5fbf2f0e4819ee497e4c4660efa6cb67012e7788a781e5ceb0e34
         only-arches:
           - aarch64
       - type: file
